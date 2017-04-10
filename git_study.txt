@@ -1,0 +1,25 @@
+1. git安装
+sudo apt-get install git
+
+2. 创建用户
+git config --global user.name "Your Name"
+git config --global user.email "email@example.com"
+
+3. 创建仓库
+cd /home
+mkdir learngit
+cd learngit    //首先创建并切换到一个空目录,如/home/learngit
+git init    //初始化
+
+4. 增加文件并提交,如readme.txt
+vi readme.txt
+git add readme.txt
+git commit  //提交时需要输入改动内容
+
+5. 修改文件
+首先修改readme.txt的内容
+git diff readme.txt   //查看文件内容的变动, 更放心
+git add readme.txt
+git status   //查看状态, 可以看到待提交的文件
+git commit
+git status   //提交后,再次查看仓库状态
