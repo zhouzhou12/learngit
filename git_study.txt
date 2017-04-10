@@ -66,3 +66,20 @@ git checkout -- readme.txt  // 注意, add添加后(同commit提交后)就无法
 场景1：当你改乱了工作区某个文件的内容，想直接丢弃工作区的修改时，用命令git checkout -- file。
 场景2：当你不但改乱了工作区某个文件的内容，还添加到了暂存区时，想丢弃修改，分两步，第一步用命令git reset HEAD file，就回到了场景1，第二步按场景1操作。
 场景3：已经提交了不合适的修改到版本库时，想要撤销本次提交，参考版本回退，不过前提是没有推送到远程库。
+
+
+二. 远程仓库
+1. 创建SSH KEY
+ssh-keygen -t rsa -C "youremail@example.com"
+ls -a 找到主目录下的.ssh目录
+cd .ssh
+vi id_rsa.pub
+然后, 把id_rsa.pub中的内容复制到github中
+
+2. 创建github仓库, 如learngit
+3. git和github关联和推送
+git remote add origin git@github.com:michaelliao/learngit.git    //或git remote add origin https://github.com/zhouzhou12/learngit.git
+要关联一个远程库，使用命令git remote add origin git@server-name:path/repo-name.git或git remote add origin https://github.com/zhouzhou12/learngit.git；
+关联后，使用命令git push -u origin master第一次推送master分支的所有内容；
+此后，每次本地提交后，只要有必要，就可以使用命令git push origin master推送最新修改；
+
