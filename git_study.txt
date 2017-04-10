@@ -31,7 +31,7 @@ git reset --hard HEAD^     //回退到上一个版本,上上个版本改为HEAD^
 git reset --hard 版本号    //回退版本后,若要穿越回未来,命令窗口没有关闭的情况下,上上滚找到版本号,执行此命令
 //版本号没必要写全，前几位就可以了，Git会自动去找。当然也不能只写前一两位，因为Git可能会找到多个版本号，就无法确定是哪一个了。
 cat readme.txt  //查看穿越后的文件
-若仅回退某一个文件,用git checkout -file
+若仅回退某一个文件,请看8
 
 
 7. 版本回退后穿梭回未来
@@ -43,3 +43,22 @@ ea34578 HEAD@{0}: reset: moving to HEAD^
 ea34578 HEAD@{2}: commit: add distributed
 cb926e7 HEAD@{3}: commit (initial): wrote a readme file
 终于舒了口气，第二行显示append GPL的commit id是3628164，现在，你又可以乘坐时光机回到未来了。
+
+8.仅回退单个文件, 以readme.txt为例
+git log readme.txt
+git reset 版本号 readme.txt
+git commit -m "..."
+git checkout readme.txt   //更新到工作目录
+
+9. git add 的各种区别:
+git add -A   // 添加所有改动
+git add *     // 添加新建文件和修改，但是不包括删除
+git add .    // 添加新建文件和修改，但是不包括删除
+git add -u   // 添加修改和删除，但是不包括新建文件
+
+10. 在 commit前撤销 add:
+git reset <file> // 撤销提交单独文件
+git reset        // unstage all due changes
+
+11. add/commit前撤销对文件的修改:
+git checkout -- readme.txt  // 注意, add添加后(同commit提交后)就无法通过这种方式撤销修改
